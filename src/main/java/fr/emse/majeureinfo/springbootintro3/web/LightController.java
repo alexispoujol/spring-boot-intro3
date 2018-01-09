@@ -1,5 +1,6 @@
 package fr.emse.majeureinfo.springbootintro3.web;
 import fr.emse.majeureinfo.springbootintro3.dao.LightDao;
+import fr.emse.majeureinfo.springbootintro3.model.Light;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -19,6 +20,13 @@ public class LightController {
 
     @GetMapping
     public List<LightDto> list() {
+        return lightDao.findAll().stream().map(LightDto::new).collect(Collectors.toList());
+    }
+
+    @PostMapping(value = "/{LightId}/switch/light", consumes = "application/json")
+    public List<LightDto> switchLightList(@PathVariable Long LightId){
+        Light light = lightDao.getOne(LightId);
+        light.switchStatus();
         return lightDao.findAll().stream().map(LightDto::new).collect(Collectors.toList());
     }
 }

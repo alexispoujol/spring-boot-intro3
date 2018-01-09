@@ -2,6 +2,9 @@ package fr.emse.majeureinfo.springbootintro3.model;
 
 import javax.persistence.*;
 
+import static fr.emse.majeureinfo.springbootintro3.model.Status.OFF;
+import static fr.emse.majeureinfo.springbootintro3.model.Status.ON;
+
 @Entity
 @SuppressWarnings("serial")
 public class Light {
@@ -47,5 +50,13 @@ public class Light {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void switchStatus(){
+        switch(this.status){
+            case ON : this.status= OFF ;
+                break;
+            default : this.status= ON ;
+        }
     }
 }

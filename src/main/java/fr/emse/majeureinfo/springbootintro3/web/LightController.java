@@ -24,7 +24,7 @@ public class LightController {
     }
 
 
-    @PostMapping(value = "/{LightId}/switch/light", consumes = "application/json")
+    @PostMapping(value = "/{LightId}/switch/light")
     public List<LightDto> switchLightList(@PathVariable Long LightId){
         Light light = lightDao.getOne(LightId);
         light.switchStatus();

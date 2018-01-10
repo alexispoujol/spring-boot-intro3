@@ -35,4 +35,10 @@ public class RoomController {
         return new RoomDto(room);
     }
 
+    @GetMapping(value = "/{id}")
+    public RoomDto getroom(@PathVariable Long id) {
+        Room room = roomDao.getOne(id);
+        return new RoomDto(room);
+    }
+
 }

@@ -23,6 +23,12 @@ public class Light {
     public Light() {
     }
 
+    public Light(Long id, Integer level, Status status) {
+        this.id = id;
+        this.level = level;
+        this.status = status;
+    }
+
     public Light(Integer level, Status status) {
         this.level = level;
         this.status = status;

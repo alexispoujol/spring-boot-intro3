@@ -30,7 +30,7 @@ public class RoomController {
 
     @PostMapping(value = "/test")
     public RoomDto test() {
-        Light light = new Light(1l, 20, Status.ON);
+        Light light = new Light(20, Status.ON);
         lightDao.save(light);
         Room room = new Room(light);
         roomDao.save(room);

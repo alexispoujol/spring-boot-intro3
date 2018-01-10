@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
 @Transactional
 public class RoomController {
     private final RoomDao roomDao;
-    public RoomController(RoomDao roomDao) {
+    private final LightDao lightDao;
+    public RoomController(RoomDao roomDao, LightDao lightDao) {
         this.roomDao = roomDao;
+        this.lightDao = lightDao;
     }
 
 
@@ -28,7 +30,7 @@ public class RoomController {
 
     @PostMapping(value = "/test")
     public RoomDto test() {
-        Room room = new Room(new Light(20, Status.ON));
+        Room room = new Room(lightDao.getOne(1l));
         roomDao.save(room);
         return new RoomDto(room);
     }

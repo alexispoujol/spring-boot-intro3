@@ -23,6 +23,7 @@ public class LightController {
         return lightDao.findAll().stream().map(LightDto::new).collect(Collectors.toList());
     }
 
+
     @PostMapping(value = "/{LightId}/switch/light", consumes = "application/json")
     public List<LightDto> switchLightList(@PathVariable Long LightId){
         Light light = lightDao.getOne(LightId);
